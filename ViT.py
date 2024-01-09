@@ -1,10 +1,9 @@
 import os
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
 import tensorflow as tf
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import Model
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 class ClassToken(Layer):
@@ -85,16 +84,17 @@ def ViT(cf):
 
 
 if __name__ == "__main__":
-    config = {}
-    config["num_layers"] = 12
-    config["hidden_dim"] = 768
-    config["mlp_dim"] = 3072
-    config["num_heads"] = 12
-    config["dropout_rate"] = 0.1
-    config["num_patches"] = 256
-    config["patch_size"] = 32
-    config["num_channels"] = 3
-    config["num_classes"] = 5
+    config = {
+        "num_layers": 12,
+        "hidden_dim": 768,
+        "mlp_dim": 3072,
+        "num_heads": 12,
+        "dropout_rate": 0.1,
+        "num_patches": 256,
+        "patch_size": 32,
+        "num_channels": 3,
+        "num_classes": 5
+    }
 
     model = ViT(config)
     model.summary()
